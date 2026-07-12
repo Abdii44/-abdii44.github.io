@@ -83,8 +83,19 @@ n=Math.floor(Math.random()*75)+1;
 called.push(n);
 count++;
 
-document.getElementById("number").innerHTML=
-"Lakkoofsa: "+n;
+let num=document.getElementById("number");
+
+num.innerHTML="Lakkoofsa: "+n;
+
+num.classList.remove("pop");
+void num.offsetWidth;
+num.classList.add("pop");
+
+let sound=new Audio(
+"https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"
+);
+
+sound.play();
 
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: "+count;
