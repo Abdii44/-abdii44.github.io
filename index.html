@@ -235,7 +235,13 @@ document.getElementById("name").innerHTML=
 
 
 function start(){
+if(balance < 25){
+    alert("Qarshii gahaa hin qabu!");
+    return;
+}
 
+balance -= 25;
+document.getElementById("balance").innerHTML = balance;
 let n;
 
 do{
