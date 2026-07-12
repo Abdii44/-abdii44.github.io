@@ -64,16 +64,19 @@ button{
 
 <button onclick="start()">Start Bingo</button>
 <button onclick="newGame()">New Game</button>
-
+<p id="count">Lakkoofsa ba'e: 0</p>
+<button onclick="resetGame()">🔄 Reset</button>
 <h2 id="number">Lakkoofsa: -</h2>
 <h2 id="win"></h2>
 
 <script>
 
 let called=[];
-
+let count = 0;
 let available=[];
-
+function resetGame(){
+ location.reload();
+}
 
 function randomNumbers(min,max,count){
 
@@ -160,7 +163,10 @@ let n=available[index];
 available.splice(index,1);
 
 called.push(n);
+count++;
 
+document.getElementById("count").innerHTML =
+"Lakkoofsa ba'e: " + count;
 
 document.getElementById("number").innerHTML=
 "Lakkoofsa: "+n;
