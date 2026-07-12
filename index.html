@@ -86,7 +86,69 @@ th{
 
 let called=[];
 let count=0;
+let columns=[];
 
+function randomNumbers(min,max){
+
+let arr=[];
+
+while(arr.length<5){
+
+let n=Math.floor(Math.random()*(max-min+1))+min;
+
+if(!arr.includes(n)){
+arr.push(n);
+}
+
+}
+
+return arr;
+
+}
+
+
+function createBoard(){
+
+columns=[
+randomNumbers(1,15),
+randomNumbers(16,30),
+randomNumbers(31,45),
+randomNumbers(46,60),
+randomNumbers(61,75)
+];
+
+
+let board=document.getElementById("board");
+
+
+for(let r=0;r<5;r++){
+
+let row=board.insertRow();
+
+for(let c=0;c<5;c++){
+
+let cell=row.insertCell();
+
+
+if(r==2 && c==2){
+
+cell.innerHTML="FREE";
+cell.classList.add("mark");
+
+}else{
+
+cell.innerHTML=columns[c][r];
+
+}
+
+}
+
+}
+
+}
+
+
+createBoard();
 </script>
 
 </body>
