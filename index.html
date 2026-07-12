@@ -120,7 +120,6 @@ th{
 
 <h2 id="win"></h2>
 
-
 <script>
 
 let called=[];
@@ -141,7 +140,6 @@ document.getElementById("balance").innerHTML = balance;
 
 }
 
-
 function takeMoney(){
 
 let money = Number(document.getElementById("withdraw").value);
@@ -159,7 +157,6 @@ alert("Balance gahaa hin qabu!");
 }
 
 }
-
 
 function randomNumbers(min,max){
 
@@ -179,7 +176,6 @@ return arr;
 
 }
 
-
 function createBoard(){
 
 columns=[
@@ -190,9 +186,7 @@ randomNumbers(46,60),
 randomNumbers(61,75)
 ];
 
-
 let board=document.getElementById("board");
-
 
 for(let r=0;r<5;r++){
 
@@ -219,9 +213,7 @@ cell.innerHTML=columns[c][r];
 
 }
 
-
 createBoard();
-
 
 function setPlayer(){
 
@@ -231,8 +223,6 @@ document.getElementById("name").innerHTML=
 "👤 Player: "+p;
 
 }
-
-
 
 function start(){
 if(balance < 25){
@@ -250,11 +240,13 @@ n=Math.floor(Math.random()*75)+1;
 
 }while(called.includes(n));
 
-
 called.push(n);
 
 count++;
 
+
+document.getElementById("history").innerHTML =
+called.join(" - ");
 
 let num=document.getElementById("number");
 
@@ -266,13 +258,10 @@ void num.offsetWidth;
 
 num.classList.add("pop");
 
-
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: "+count;
 
-
 let cells=document.querySelectorAll("#board td");
-
 
 cells.forEach(cell=>{
 
@@ -284,17 +273,13 @@ cell.classList.add("mark");
 
 });
 
-
 checkWin();
 
 }
 
-
-
 function checkWin(){
 
 let cells=document.querySelectorAll("#board td");
-
 
 let lines=[
 [0,1,2,3,4],
@@ -310,7 +295,6 @@ let lines=[
 [0,6,12,18,24],
 [4,8,12,16,20]
 ];
-
 
 for(let line of lines){
 
@@ -336,8 +320,6 @@ return;
 }
 
 }
-
-
 
  function newGame(){
 
