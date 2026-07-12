@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,11 +117,9 @@ th{
 
 <h2 id="number">Lakkoofsa: -</h2>
 <p id="count">Lakkoofsa ba'e: 0</p>
-<h3>📜 History</h3>
-<p id="history">Lakkoofsa ba'e hin jiru</p>
+
 <h2 id="win"></h2>
-<div id="drum">🎱</div>
-<div id="ball">?</div>
+
 
 <script>
 
@@ -236,15 +236,8 @@ document.getElementById("name").innerHTML=
 
 function start(){
 
-if(balance < 25){
-alert("Qarshii gahaa hin qabu!");
-return;
-}
-
-balance -= 25;
-document.getElementById("balance").innerHTML = balance;
-
 let n;
+
 do{
 
 n=Math.floor(Math.random()*75)+1;
@@ -256,8 +249,6 @@ called.push(n);
 
 count++;
 
-document.getElementById("history").innerHTML =
-called.join(" - ");
 
 let num=document.getElementById("number");
 
@@ -330,8 +321,7 @@ let sound=new Audio(
 
 sound.play();
 alert("🎉 BINGO! Ati mo'atte!");
-balance += 250;
-document.getElementById("balance").innerHTML = balance;
+
 return;
 
 }
