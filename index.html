@@ -329,7 +329,7 @@ location.reload();
 
 
 
-  // Firebase code kee as kaa'i
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
@@ -347,7 +347,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+import { ref, set } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 
+window.saveNumber = function(number){
+  set(ref(database, "bingo/currentNumber"), {
+    number: number,
+    time: Date.now()
+  });
+}
 </script>
 
 
