@@ -10,9 +10,7 @@ body{
  background:#f2f2f2;
 }
 
-h1{
- color:green;
-}
+h1{color:green;}
 
 table{
  margin:auto;
@@ -57,12 +55,13 @@ button{
 <button onclick="start()">Start Bingo</button>
 
 <h2 id="number">Lakkoofsa: -</h2>
+<h2 id="win"></h2>
 
 <script>
 
 let called=[];
 
-let columns=[
+let numbers=[
 [1,2,3,4,5],
 [16,17,18,19,20],
 [31,32,33,34,35],
@@ -76,7 +75,7 @@ for(let r=0;r<5;r++){
  let row=board.insertRow();
  for(let c=0;c<5;c++){
   let cell=row.insertCell();
-  cell.innerHTML=columns[c][r];
+  cell.innerHTML=numbers[c][r];
  }
 }
 
@@ -90,16 +89,37 @@ do{
 
 called.push(n);
 
-document.getElementById("number").innerHTML=
-"Lakkoofsa: "+n;
+document.getElementById("number").innerHTML="Lakkoofsa: "+n;
 
-let cells=document.querySelectorAll("#board td");
-
-cells.forEach(cell=>{
+document.querySelectorAll("#board td").forEach(cell=>{
  if(cell.innerHTML==n){
   cell.classList.add("mark");
  }
 });
+
+checkWin();
+
+}
+
+
+function checkWin(){
+
+let rows=document.querySelectorAll("#board tr");
+
+for(let r=1;r<rows.length;r++){
+ let cells=rows[r].querySelectorAll("td");
+ let ok=true;
+
+ cells.forEach(c=>{
+  if(!c.classList.contains("mark")){
+   ok=false;
+  }
+ });
+
+ if(ok){
+  document.getElementById("win").innerHTML="🎉 BINGO!";
+ }
+}
 
 }
 
