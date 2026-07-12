@@ -149,6 +149,46 @@ cell.innerHTML=columns[c][r];
 
 
 createBoard();
+ function start(){
+
+if(called.length>=75){
+alert("Lakkoofsi hundi ba'eera!");
+return;
+}
+
+let n;
+
+do{
+ n=Math.floor(Math.random()*75)+1;
+}
+while(called.includes(n));
+
+
+called.push(n);
+count++;
+
+
+document.getElementById("number").innerHTML=
+"Lakkoofsa: "+n;
+
+
+document.getElementById("count").innerHTML=
+"Lakkoofsa ba'e: "+count;
+
+
+let cells=document.querySelectorAll("#board td");
+
+cells.forEach(cell=>{
+
+if(cell.innerHTML==n){
+
+cell.classList.add("mark");
+
+}
+
+});
+
+}
 </script>
 
 </body>
