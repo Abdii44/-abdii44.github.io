@@ -257,7 +257,13 @@ if(line.every(i=>cells[i].classList.contains("mark"))){
 let win=document.getElementById("win");
 
 win.innerHTML="🎉🎉 BINGO! MO'ATTE 🎉🎉";
+win.classList.add("confetti");
 
+let sound=new Audio(
+"https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
+);
+
+sound.play();
 alert("🎉 BINGO! Ati mo'atte!");
 
 return;
