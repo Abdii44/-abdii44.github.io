@@ -225,58 +225,56 @@ document.getElementById("name").innerHTML=
 
 }
 
+
+
 function start(){
-if(balance < 25){
-    alert("Qarshii gahaa hin qabu!");
-    return;
+
+    if(called.length >= 75){
+        alert("Lakkoofsi hundi ba'eera. New Game jalqabi.");
+        return;
+    }
+
+    if(balance < 25){
+        alert("Qarshii gahaa hin qabu!");
+        return;
+    }
+
+    balance -= 25;
+    document.getElementById("balance").innerHTML = balance;
+
+    let n;
+
+    do{
+        n = Math.floor(Math.random()*75)+1;
+    }while(called.includes(n));
+
+    called.push(n);
+    count++;
+
+    document.getElementById("history").innerHTML = called.join(" - ");
+
+    let num = document.getElementById("number");
+    num.innerHTML = "Lakkoofsa: " + n;
+
+    num.classList.remove("pop");
+    void num.offsetWidth;
+    num.classList.add("pop");
+
+    document.getElementById("count").innerHTML =
+        "Lakkoofsa ba'e: " + count;
+
+    let cells = document.querySelectorAll("#board td");
+
+    cells.forEach(cell=>{
+        if(cell.innerHTML == n){
+            cell.classList.add("mark");
+        }
+    });
+
+    checkWin();
 }
+    
 
-balance -= 25;
-document.getElementById("balance").innerHTML = balance;
-let n;
-
-do{
-
-n=Math.floor(Math.random()*75)+1;
-
-}while(called.includes(n));
-
-called.push(n);
-
-count++;
-
-
-document.getElementById("history").innerHTML =
-called.join(" - ");
-
-let num=document.getElementById("number");
-
-num.innerHTML="Lakkoofsa: "+n;
-
-num.classList.remove("pop");
-
-void num.offsetWidth;
-
-num.classList.add("pop");
-
-document.getElementById("count").innerHTML=
-"Lakkoofsa ba'e: "+count;
-
-let cells=document.querySelectorAll("#board td");
-
-cells.forEach(cell=>{
-
-if(cell.innerHTML==n){
-
-cell.classList.add("mark");
-
-}
-
-});
-
-checkWin();
-
-}
 
 function checkWin(){
 
