@@ -1,24 +1,25 @@
-function start(){
+function randomNumbers(min,max){
 
-let n;
+let arr=[];
 
-do{
-  n=Math.floor(Math.random()*75)+1;
-}while(called.includes(n));
+while(arr.length<5){
 
-called.push(n);
+let n=Math.floor(Math.random()*(max-min+1))+min;
 
-document.getElementById("number").innerHTML =
-"Lakkoofsa: "+n;
-
-let cells=document.querySelectorAll("#board td");
-
-cells.forEach(cell=>{
-  if(cell.innerHTML==n){
-    cell.classList.add("mark");
-  }
-});
-
-checkWin();
+if(!arr.includes(n)){
+arr.push(n);
+}
 
 }
+
+return arr;
+
+}
+
+let cols=[
+randomNumbers(1,15),
+randomNumbers(16,30),
+randomNumbers(31,45),
+randomNumbers(46,60),
+randomNumbers(61,75)
+];
