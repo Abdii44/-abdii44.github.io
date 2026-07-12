@@ -226,7 +226,6 @@ document.getElementById("name").innerHTML=
 }
 
 
-
 function start(){
 
     if(called.length >= 75){
@@ -273,52 +272,49 @@ function start(){
 
     checkWin();
 }
-    
-
 
 function checkWin(){
 
-let cells=document.querySelectorAll("#board td");
+    let cells = document.querySelectorAll("#board td");
 
-let lines=[
-[0,1,2,3,4],
-[5,6,7,8,9],
-[10,11,12,13,14],
-[15,16,17,18,19],
-[20,21,22,23,24],
-[0,5,10,15,20],
-[1,6,11,16,21],
-[2,7,12,17,22],
-[3,8,13,18,23],
-[4,9,14,19,24],
-[0,6,12,18,24],
-[4,8,12,16,20]
-];
+    let lines = [
+        [0,1,2,3,4],
+        [5,6,7,8,9],
+        [10,11,12,13,14],
+        [15,16,17,18,19],
+        [20,21,22,23,24],
+        [0,5,10,15,20],
+        [1,6,11,16,21],
+        [2,7,12,17,22],
+        [3,8,13,18,23],
+        [4,9,14,19,24],
+        [0,6,12,18,24],
+        [4,8,12,16,20]
+    ];
 
-for(let line of lines){
+    for(let line of lines){
 
-if(line.every(i=>cells[i].classList.contains("mark"))){
+        if(line.every(i => cells[i].classList.contains("mark"))){
 
-let win=document.getElementById("win");
+            document.querySelector("button[onclick='start()']").disabled = true;
 
-win.innerHTML="🎉🎉 BINGO! MO'ATTE 🎉🎉";
-win.classList.add("confetti");
+            let win = document.getElementById("win");
+            win.innerHTML = "🎉🎉 BINGO! MO'ATTE 🎉🎉";
+            win.classList.add("confetti");
 
-let sound=new Audio(
-"https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
-);
+            let sound = new Audio("https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg");
+            sound.play();
 
-sound.play();
-alert("🎉 BINGO! Ati mo'atte!");
-balance += 250;
-document.getElementById("balance").innerHTML = balance;
-return;
+            alert("🎉 BINGO! Ati mo'atte!");
 
+            balance += 250;
+            document.getElementById("balance").innerHTML = balance;
+
+            return;
+        }
+    }
 }
-
-}
-
-}
+  
 
  function newGame(){
 
