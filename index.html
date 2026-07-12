@@ -1,92 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Abdii Bingo</title>
-
-<style>
-body{
- text-align:center;
- font-family:Arial;
- background:#f2f2f2;
-}
-
-h1{
- color:green;
-}
-
-input{
- padding:10px;
- font-size:18px;
-}
-
-button{
- padding:12px 25px;
- font-size:18px;
- margin:10px;
-}
-
-table{
- margin:auto;
- border-collapse:collapse;
-}
-
-th,td{
- border:2px solid black;
- width:60px;
- height:60px;
- font-size:22px;
- background:white;
-}
-
-th{
- background:green;
- color:white;
-}
-
-.mark{
- background:yellow;
-}
-
-#win{
- color:green;
- font-size:30px;
-}
-</style>
-
-</head>
-
-<body>
-
-<h1>🎱 Abdii Bingo</h1>
-
-<input id="player" placeholder="Maqaa Player">
-<button onclick="setPlayer()">Galchi</button>
-
-<h2 id="name"></h2>
-
-<table id="board">
-<tr>
-<th>B</th>
-<th>I</th>
-<th>N</th>
-<th>G</th>
-<th>O</th>
-</tr>
-</table>
-
-<button onclick="start()">Start Bingo</button>
-<button onclick="newGame()">New Game</button>
-
-<h2 id="number">Lakkoofsa: -</h2>
-<p id="count">Lakkoofsa ba'e: 0</p>
-<h2 id="win"></h2>
-
-
 <script>
 
 let called=[];
 let count=0;
 let columns=[];
+
 
 function randomNumbers(min,max){
 
@@ -117,9 +34,7 @@ randomNumbers(46,60),
 randomNumbers(61,75)
 ];
 
-
 let board=document.getElementById("board");
-
 
 for(let r=0;r<5;r++){
 
@@ -128,7 +43,6 @@ let row=board.insertRow();
 for(let c=0;c<5;c++){
 
 let cell=row.insertCell();
-
 
 if(r==2 && c==2){
 
@@ -149,19 +63,27 @@ cell.innerHTML=columns[c][r];
 
 
 createBoard();
- function start(){
 
-if(called.length>=75){
-alert("Lakkoofsi hundi ba'eera!");
-return;
+
+function setPlayer(){
+
+let p=document.getElementById("player").value;
+
+document.getElementById("name").innerHTML=
+"👤 Player: "+p;
+
 }
+
+
+function start(){
 
 let n;
 
 do{
- n=Math.floor(Math.random()*75)+1;
-}
-while(called.includes(n));
+
+n=Math.floor(Math.random()*75)+1;
+
+}while(called.includes(n));
 
 
 called.push(n);
@@ -188,9 +110,12 @@ cell.classList.add("mark");
 
 });
 
+
 checkWin();
 
 }
+
+
 
 function checkWin(){
 
@@ -211,6 +136,7 @@ let lines=[
 [4,8,12,16,20]
 ];
 
+
 for(let line of lines){
 
 if(line.every(i=>cells[i].classList.contains("mark"))){
@@ -224,8 +150,12 @@ return;
 }
 
 }
+
+
+function newGame(){
+
+location.reload();
+
+}
+
 </script>
-
-
-</body>
-</html>
