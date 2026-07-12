@@ -1,25 +1,93 @@
-function randomNumbers(min,max){
+<!DOCTYPE html>
+<html>
+<head>
+<title>Abdii Bingo</title>
 
-let arr=[];
-
-while(arr.length<5){
-
-let n=Math.floor(Math.random()*(max-min+1))+min;
-
-if(!arr.includes(n)){
-arr.push(n);
+<style>
+body{
+ text-align:center;
+ font-family:Arial;
+ background:#f2f2f2;
 }
 
+h1{
+ color:green;
 }
 
-return arr;
-
+input{
+ padding:10px;
+ font-size:18px;
 }
 
-let cols=[
-randomNumbers(1,15),
-randomNumbers(16,30),
-randomNumbers(31,45),
-randomNumbers(46,60),
-randomNumbers(61,75)
-];
+button{
+ padding:12px 25px;
+ font-size:18px;
+ margin:10px;
+}
+
+table{
+ margin:auto;
+ border-collapse:collapse;
+}
+
+th,td{
+ border:2px solid black;
+ width:60px;
+ height:60px;
+ font-size:22px;
+ background:white;
+}
+
+th{
+ background:green;
+ color:white;
+}
+
+.mark{
+ background:yellow;
+}
+
+#win{
+ color:green;
+ font-size:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎱 Abdii Bingo</h1>
+
+<input id="player" placeholder="Maqaa Player">
+<button onclick="setPlayer()">Galchi</button>
+
+<h2 id="name"></h2>
+
+<table id="board">
+<tr>
+<th>B</th>
+<th>I</th>
+<th>N</th>
+<th>G</th>
+<th>O</th>
+</tr>
+</table>
+
+<button onclick="start()">Start Bingo</button>
+<button onclick="newGame()">New Game</button>
+
+<h2 id="number">Lakkoofsa: -</h2>
+
+<h2 id="win"></h2>
+
+
+<script>
+
+let called=[];
+let count=0;
+
+</script>
+
+</body>
+</html>
