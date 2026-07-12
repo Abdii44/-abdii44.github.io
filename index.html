@@ -1,8 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Abdii Bingo</title>
+
+<style>
+body{
+ text-align:center;
+ font-family:Arial;
+ background:#f2f2f2;
+}
+
+h1{
+ color:green;
+}
+
+input{
+ padding:10px;
+ font-size:18px;
+}
+
+button{
+ padding:12px 25px;
+ font-size:18px;
+ margin:10px;
+}
+
+table{
+ margin:auto;
+ border-collapse:collapse;
+}
+
+th,td{
+ border:2px solid black;
+ width:60px;
+ height:60px;
+ font-size:22px;
+ background:white;
+}
+
+th{
+ background:green;
+ color:white;
+}
+
+.mark{
+ background:yellow;
+}
+
+#win{
+ color:green;
+ font-size:30px;
+}
+
+.pop{
+ animation:pop 0.5s;
+}
+
+@keyframes pop{
+ from{
+  transform:scale(1.5);
+ }
+ to{
+  transform:scale(1);
+ }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎱 Abdii Bingo</h1>
+
+<input id="player" placeholder="Maqaa Player">
+<button onclick="setPlayer()">Galchi</button>
+
+<h2 id="name"></h2>
+
+<table id="board">
+<tr>
+<th>B</th>
+<th>I</th>
+<th>N</th>
+<th>G</th>
+<th>O</th>
+</tr>
+</table>
+
+<button onclick="start()">Start Bingo</button>
+<button onclick="newGame()">New Game</button>
+
+<h2 id="number">Lakkoofsa: -</h2>
+
+<p id="count">Lakkoofsa ba'e: 0</p>
+
+<h2 id="win"></h2>
+
+
 <script>
 
 let called=[];
 let count=0;
 let columns=[];
+
 
 function randomNumbers(min,max){
 
@@ -22,6 +123,7 @@ return arr;
 
 }
 
+
 function createBoard(){
 
 columns=[
@@ -32,7 +134,9 @@ randomNumbers(46,60),
 randomNumbers(61,75)
 ];
 
+
 let board=document.getElementById("board");
+
 
 for(let r=0;r<5;r++){
 
@@ -59,7 +163,9 @@ cell.innerHTML=columns[c][r];
 
 }
 
+
 createBoard();
+
 
 function setPlayer(){
 
@@ -69,6 +175,8 @@ document.getElementById("name").innerHTML=
 "👤 Player: "+p;
 
 }
+
+
 
 function start(){
 
@@ -80,27 +188,29 @@ n=Math.floor(Math.random()*75)+1;
 
 }while(called.includes(n));
 
+
 called.push(n);
+
 count++;
+
 
 let num=document.getElementById("number");
 
 num.innerHTML="Lakkoofsa: "+n;
 
 num.classList.remove("pop");
+
 void num.offsetWidth;
+
 num.classList.add("pop");
 
-let sound=new Audio(
-"https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"
-);
-
-sound.play();
 
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: "+count;
 
+
 let cells=document.querySelectorAll("#board td");
+
 
 cells.forEach(cell=>{
 
@@ -112,13 +222,17 @@ cell.classList.add("mark");
 
 });
 
+
 checkWin();
 
 }
 
+
+
 function checkWin(){
 
 let cells=document.querySelectorAll("#board td");
+
 
 let lines=[
 [0,1,2,3,4],
@@ -135,6 +249,7 @@ let lines=[
 [4,8,12,16,20]
 ];
 
+
 for(let line of lines){
 
 if(line.every(i=>cells[i].classList.contains("mark"))){
@@ -148,8 +263,13 @@ alert("🎉 BINGO! Ati mo'atte!");
 return;
 
 }
+
 }
+
 }
+
+
+
 function newGame(){
 
 location.reload();
@@ -160,7 +280,3 @@ location.reload();
 
 </body>
 </html>
-
-  
-  
-  
