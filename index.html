@@ -44,8 +44,8 @@ button{
  font-size:18px;
  margin:10px;
 }
-
 </style>
+
 </head>
 
 <body>
@@ -69,40 +69,77 @@ button{
 <h2 id="number">Lakkoofsa: -</h2>
 <h2 id="win"></h2>
 
+
 <script>
 
 let called=[];
 
-let ranges=[
-[1,2,3,4,5],
-[16,17,18,19,20],
-[31,32,33,34,35],
-[46,47,48,49,50],
-[61,62,63,64,65]
-];
 
-let board=document.getElementById("board");
+function randomNumbers(min,max,count){
+
+let arr=[];
+
+while(arr.length<count){
+let n=Math.floor(Math.random()*(max-min+1))+min;
+
+if(!arr.includes(n)){
+arr.push(n);
+}
+}
+
+return arr;
+
+}
+
 
 function createBoard(){
 
+let cols=[
+randomNumbers(1,15,5),
+randomNumbers(16,30,5),
+randomNumbers(31,45,5),
+randomNumbers(46,60,5),
+randomNumbers(61,75,5)
+];
+
+
+let board=document.getElementById("board");
+
+
 for(let r=0;r<5;r++){
- let row=board.insertRow();
 
- for(let c=0;c<5;c++){
-  let cell=row.insertCell();
-  cell.innerHTML=ranges[c][r];
- }
+let row=board.insertRow();
+
+for(let c=0;c<5;c++){
+
+let cell=row.insertCell();
+
+if(r==2 && c==2){
+cell.innerHTML="FREE";
+cell.classList.add("mark");
+}else{
+cell.innerHTML=cols[c][r];
 }
 
 }
+
+}
+
+}
+
 
 createBoard();
 
 
 function setPlayer(){
+
 let p=document.getElementById("player").value;
-document.getElementById("name").innerHTML="👤 Player: "+p;
+
+document.getElementById("name").innerHTML=
+"👤 Player: "+p;
+
 }
+
 
 
 function start(){
@@ -110,61 +147,39 @@ function start(){
 let n;
 
 do{
+
 n=Math.floor(Math.random()*75)+1;
+
 }while(called.includes(n));
 
+
 called.push(n);
+
 
 document.getElementById("number").innerHTML=
 "Lakkoofsa: "+n;
 
+
 document.querySelectorAll("#board td").forEach(cell=>{
+
 if(cell.innerHTML==n){
+
 cell.classList.add("mark");
+
 }
+
 });
 
-checkWin();
-
 }
 
-
-function checkWin(){
-
-let cells=document.querySelectorAll("#board td");
-let win=false;
-
-let lines=[
-[0,1,2,3,4],
-[5,6,7,8,9],
-[10,11,12,13,14],
-[15,16,17,18,19],
-[20,21,22,23,24],
-[0,5,10,15,20],
-[1,6,11,16,21],
-[2,7,12,17,22],
-[3,8,13,18,23],
-[4,9,14,19,24],
-[0,6,12,18,24],
-[4,8,12,16,20]
-];
-
-lines.forEach(line=>{
-if(line.every(i=>cells[i].classList.contains("mark"))){
-win=true;
-}
-});
-
-if(win){
-document.getElementById("win").innerHTML="🎉 BINGO!";
-}
-
-}
 
 
 function newGame(){
+
 location.reload();
+
 }
+
 
 </script>
 
