@@ -118,7 +118,38 @@ let called=[];
 let count=0;
 let columns=[];
 let balance=100;
+function addMoney(){
 
+let money = Number(document.getElementById("deposit").value);
+
+if(money > 0){
+
+balance += money;
+
+document.getElementById("balance").innerHTML = balance;
+
+}
+
+}
+
+
+function takeMoney(){
+
+let money = Number(document.getElementById("withdraw").value);
+
+if(money <= balance){
+
+balance -= money;
+
+document.getElementById("balance").innerHTML = balance;
+
+}else{
+
+alert("Balance gahaa hin qabu!");
+
+}
+
+}
 
 
 function randomNumbers(min,max){
