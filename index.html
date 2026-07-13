@@ -162,7 +162,9 @@ if(money <= balance){
 balance -= money;
 
 document.getElementById("balance").innerHTML = balance;
-
+if(currentUser){
+ saveBalance(currentUser);
+}
 }else{
 
 alert("Balance gahaa hin qabu!");
@@ -329,7 +331,9 @@ function checkWin(){
 
             balance += 250;
             document.getElementById("balance").innerHTML = balance;
-
+if(currentUser){
+    saveBalance(currentUser);
+}
             return;
         }
     }
