@@ -218,12 +218,16 @@ createBoard();
 
 function setPlayer(){
 
+
 let p=document.getElementById("player").value;
 
-document.getElementById("name").innerHTML=
-"👤 Player: "+p;
+document.getElementById("name").innerHTML =
+"👤 Player: " + p;
+
+savePlayer(p);
 
 }
+
 
 
 function start(){
@@ -330,10 +334,11 @@ location.reload();
 
 
 
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBsLooxOygkTwdiGvhPZbpv_AE83pyMt7k",
@@ -347,7 +352,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-import { ref, set } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+
+window.savePlayer = function(name){
+  set(ref(database, "players/" + name), {
+    name: name,
+    time: Date.now()
+  });
+}
 
 window.saveNumber = function(number){
   set(ref(database, "bingo/currentNumber"), {
@@ -355,7 +366,9 @@ window.saveNumber = function(number){
     time: Date.now()
   });
 }
+
 </script>
+
 
 
 </body>
