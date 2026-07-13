@@ -338,8 +338,8 @@ location.reload();
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBsLooxOygkTwdiGvhPZbpv_AE83pyMt7k",
   authDomain: "abdii-binfo.firebaseapp.com",
@@ -366,7 +366,18 @@ window.saveNumber = function(number){
     time: Date.now()
   });
 }
+onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
 
+  const data = snapshot.val();
+
+  if(data){
+
+    document.getElementById("number").innerHTML =
+      "Lakkoofsa: " + data.number;
+
+  }
+
+});
 </script>
 
 
