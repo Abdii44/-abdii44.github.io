@@ -330,7 +330,30 @@ alert("🎮 Game haaraa jalqaba!");
 location.reload();
 
 }
+function register(){
 
+    let name = prompt("Maqaa kee galchi");
+
+    if(name){
+        localStorage.setItem("player", name);
+        document.getElementById("userStatus").innerHTML =
+        "✅ Seename: " + name;
+    }
+
+}
+
+function login(){
+
+    let name = localStorage.getItem("player");
+
+    if(name){
+        document.getElementById("userStatus").innerHTML =
+        "👤 Seename: " + name;
+    }else{
+        alert("Register jalqaba godhi!");
+    }
+
+}
 </script>
 
 
