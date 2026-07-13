@@ -336,30 +336,7 @@ alert("🎮 Game haaraa jalqaba!");
 location.reload();
 
 }
-function register(){
 
-    let name = prompt("Maqaa kee galchi");
-
-    if(name){
-        localStorage.setItem("player", name);
-        document.getElementById("userStatus").innerHTML =
-        "✅ Seename: " + name;
-    }
-
-}
-
-function login(){
-
-    let name = localStorage.getItem("player");
-
-    if(name){
-        document.getElementById("userStatus").innerHTML =
-        "👤 Seename: " + name;
-    }else{
-        alert("Register jalqaba godhi!");
-    }
-
-}
 </script>
 
 
@@ -368,7 +345,42 @@ function login(){
 
 
 <script type="module">
+window.register = function(){
 
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+createUserWithEmailAndPassword(auth,email,password)
+
+.then(()=>{
+document.getElementById("userStatus").innerHTML =
+"✅ Account uumame";
+})
+
+.catch(error=>{
+alert(error.message);
+});
+
+}
+
+
+window.login = function(){
+
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+signInWithEmailAndPassword(auth,email,password)
+
+.then(()=>{
+document.getElementById("userStatus").innerHTML =
+"👤 Seename";
+})
+
+.catch(error=>{
+alert(error.message);
+});
+
+}
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
@@ -392,8 +404,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
 const auth = getAuth(app);
+ const database = getDatabase(app);
+
 
 
 window.savePlayer = function(name){
