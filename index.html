@@ -369,8 +369,7 @@ window.savePlayer = function(name){
   });
 
 }
-
- onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
+onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
 
   const data = snapshot.val();
 
@@ -380,14 +379,18 @@ window.savePlayer = function(name){
       "Lakkoofsa: " + data.number;
 
     document.getElementById("count").innerHTML =
-      "Lakkoofsa ba'e: " + data.count;
+      "Lakkoofsa ba'e: " + (data.count || 0);
 
     document.getElementById("history").innerHTML =
-      data.history.join(" - ");
+      data.history ? data.history.join(" - ") : "Lakkoofsa ba'e hin jiru";
 
   }
 
 });
+
+
+
+
 </script>
 
 
