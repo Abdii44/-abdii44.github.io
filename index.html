@@ -397,9 +397,9 @@ import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebase
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyBsLooxOygkTwdiGvhPZbpv_AE83pyMt7k",
   authDomain: "abdii-binfo.firebaseapp.com",
@@ -412,8 +412,54 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
- const database = getDatabase(app);
-window.savePlayer = function(name){
+const database = getDatabase(app);
+
+
+// AS JALA KANA GALCHI
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+ if(user){
+
+   currentUser = user.uid;
+
+   document.getElementById("userStatus").innerHTML =
+   "👤 Seename: " + user.email;
+
+   loadBalance(user.uid);
+
+ }else{
+
+   currentUser="";
+
+ }
+
+});
+
+
+window.loadBalance=function(uid){
+
+ onValue(ref(database,"players/"+uid+"/balance"),(snap)=>{
+
+   if(snap.exists()){
+
+     balance=snap.val();
+
+   }else{
+
+     balance=100;
+     saveBalance(uid);
+
+   }
+
+   document.getElementById("balance").innerHTML=balance;
+
+ });
+
+}
+ window.savePlayer = function(name){
 
  set(ref(database, "players/" + name), {
    name: name,
@@ -421,7 +467,7 @@ window.savePlayer = function(name){
  });
 
 }
- window.saveBalance = function(user){
+window.saveBalance = function(user){
 
  set(ref(database, "players/" + user + "/balance"), {
    balance: balance,
