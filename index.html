@@ -363,9 +363,18 @@ function login(){
 
 <script type="module">
 
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBsLooxOygkTwdiGvhPZbpv_AE83pyMt7k",
   authDomain: "abdii-binfo.firebaseapp.com",
@@ -378,6 +387,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const auth = getAuth(app);
+
 
 window.savePlayer = function(name){
   set(ref(database, "players/" + name), {
