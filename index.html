@@ -136,6 +136,7 @@ let called=[];
 let count=0;
 let columns=[];
 let balance=100;
+let currentUser="";
 function addMoney(){
 
 let money = Number(document.getElementById("deposit").value);
@@ -145,7 +146,9 @@ if(money > 0){
 balance += money;
 
 document.getElementById("balance").innerHTML = balance;
-
+if(currentUser){
+ saveBalance(currentUser);
+}
 }
 
 }
@@ -260,9 +263,13 @@ function start(){
         n = Math.floor(Math.random()*75)+1;
     }while(called.includes(n));
 
-    called.push(n);
-    count++;
-saveNumber(n);
+   called.push(n);
+count++;
+
+if(window.saveNumber){
+    saveNumber(n);
+} 
+
     document.getElementById("history").innerHTML = called.join(" - ");
 
     let num = document.getElementById("number");
@@ -406,18 +413,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
  const database = getDatabase(app);
-
-
-
 window.savePlayer = function(name){
-  set(ref(database, "players/" + name), {
-    name: name,
-    time: Date.now()
-  });
+
+ set(ref(database, "players/" + name), {
+   name: name,
+   time: Date.now()
+ });
+
+}
+ window.saveBalance = function(user){
+
+ set(ref(database, "players/" + user + "/balance"), {
+   balance: balance,
+   time: Date.now()
+ });
+
 }
 
 
- window.saveNumber = function(number){
+
+
+
+
+window.saveNumber = function(number){
 
   set(ref(database, "bingo/currentNumber"), {
     number: number,
@@ -427,6 +445,8 @@ window.savePlayer = function(name){
   });
 
 }
+
+ 
 onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
 
   const data = snapshot.val();
