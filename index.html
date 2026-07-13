@@ -360,13 +360,19 @@ window.savePlayer = function(name){
   });
 }
 
-window.saveNumber = function(number){
+
+ window.saveNumber = function(number){
+
   set(ref(database, "bingo/currentNumber"), {
     number: number,
+    history: called,
+    count: count,
     time: Date.now()
   });
+
 }
-onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
+
+ onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
 
   const data = snapshot.val();
 
@@ -374,6 +380,12 @@ onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
 
     document.getElementById("number").innerHTML =
       "Lakkoofsa: " + data.number;
+
+    document.getElementById("count").innerHTML =
+      "Lakkoofsa ba'e: " + data.count;
+
+    document.getElementById("history").innerHTML =
+      data.history.join(" - ");
 
   }
 
