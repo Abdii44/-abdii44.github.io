@@ -130,6 +130,8 @@ th{
 <button onclick="login()">Login</button>
 
 <p id="userStatus">Hin seenne</p>
+<button onclick="setLanguage('om')">Afaan Oromoo</button>
+<button onclick="setLanguage('en')">English</button>
  <script>
 
 let called=[];
@@ -347,7 +349,31 @@ alert("🎮 Game haaraa jalqaba!");
 location.reload();
 
 }
+function setLanguage(lang){
 
+if(lang=="en"){
+
+document.querySelector("button[onclick='setPlayer()']").innerHTML="Enter";
+
+document.getElementById("player").placeholder="Player Name";
+
+document.querySelector("button[onclick='start()']").innerHTML="Start Bingo";
+
+document.querySelector("button[onclick='newGame()']").innerHTML="New Game";
+
+}else{
+
+document.querySelector("button[onclick='setPlayer()']").innerHTML="Galchi";
+
+document.getElementById("player").placeholder="Maqaa Player";
+
+document.querySelector("button[onclick='start()']").innerHTML="Start Bingo";
+
+document.querySelector("button[onclick='newGame()']").innerHTML="Game Haaraa";
+
+}
+
+}
 </script>
 
 
