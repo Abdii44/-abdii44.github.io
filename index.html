@@ -492,45 +492,42 @@ onAuthStateChanged(auth,(user)=>{
 
 });
 
-
 window.loadBalance=function(uid){
 
  onValue(ref(database,"players/"+uid+"/balance"),(snap)=>{
 
    if(snap.exists()){
 
-     balance=snap.val();
+     balance = snap.val();
 
    }else{
 
-     balance=100;
+     balance = 100;
      saveBalance(uid);
 
    }
 
-   document.getElementById("balance").innerHTML=balance;
+   document.getElementById("balance").innerHTML = balance;
 
  });
 
 }
- window.savePlayer = function(name){
 
- set(ref(database, "players/" + name), {
-   name: name,
-   time: Date.now()
- });
-
-}
+ 
 window.saveBalance = function(user){
 
- set(ref(database, "players/" + user + "/balance"), {
-   balance: balance,
-   time: Date.now()
- });
+ set(ref(database, "players/" + user + "/balance"), balance);
 
 }
+window.savePlayer = function(name){
 
+ if(currentUser){
 
+  set(ref(database, "players/" + currentUser + "/name"), name);
+
+ }
+
+}
 
 
 
