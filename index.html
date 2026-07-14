@@ -362,7 +362,6 @@ location.reload();
 
 }
 function setLanguage(lang){
-
 if(lang=="en"){
 
 document.querySelector("button[onclick='setPlayer()']").innerHTML="Enter";
@@ -384,6 +383,19 @@ document.querySelector("button[onclick='start()']").innerHTML="Start Bingo";
 document.querySelector("button[onclick='newGame()']").innerHTML="Game Haaraa";
 
 }
+
+}
+function pay(method){
+
+    document.getElementById("paymentStatus").innerHTML =
+    "⏳ " + method + " qopheessaa jira...";
+
+    setTimeout(function(){
+
+        document.getElementById("paymentStatus").innerHTML =
+        "✅ " + method + " filatte.";
+
+    },1500);
 
 }
 </script>
