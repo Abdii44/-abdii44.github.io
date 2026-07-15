@@ -89,13 +89,36 @@ th{
   transform:scale(1);
  }
 }
-</style>
+.card{
+ background:rgba(255,255,255,0.12);
+ backdrop-filter:blur(10px);
+ padding:20px;
+ margin:20px auto;
+ width:90%;
+ max-width:500px;
+ border-radius:20px;
+ box-shadow:0 0 20px black;
+}
 
+button{
+ background:#00aa55;
+ color:white;
+ border:none;
+ border-radius:15px;
+ cursor:pointer;
+}
+
+input,select{
+ border-radius:10px;
+ border:none;
+ padding:10px;
+}
+
+</style>
 </head>
 
 <body>
-
-<h1>🎱 BingoHub</h1>
+ <h1>🎱 BingoHub</h1>
 <input id="player" placeholder="Maqaa Player">
 <button onclick="setPlayer()">Galchi</button>
 
@@ -389,14 +412,28 @@ if(currentUser){
     }
 }
   
-
 function newGame(){
 
 alert("🎮 Game haaraa jalqaba!");
 
-location.reload();
+called=[];
+count=0;
+balance=100;
+
+document.getElementById("balance").innerHTML=balance;
+document.getElementById("number").innerHTML="Lakkoofsa: -";
+document.getElementById("count").innerHTML="Lakkoofsa ba'e: 0";
+document.getElementById("history").innerHTML="Lakkoofsa ba'e hin jiru";
+document.getElementById("win").innerHTML="";
+
+document.querySelector("button[onclick='start()']").disabled=false;
+
+document.querySelectorAll("#board td").forEach(cell=>{
+ cell.classList.remove("mark");
+});
 
 }
+
 function setLanguage(lang){
 if(lang=="en"){
 
