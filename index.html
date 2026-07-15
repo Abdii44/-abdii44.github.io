@@ -563,7 +563,44 @@ window.savePlayer = function(name){
  }
 
 }
+window.sendDeposit = function(){
 
+let amount = Number(document.getElementById("depositAmount").value);
+let method = document.getElementById("depositMethod").value;
+let tx = document.getElementById("transactionId").value;
+
+
+if(!currentUser){
+alert("Jalqaba Login godhi");
+return;
+}
+
+
+if(amount <= 0 || tx==""){
+alert("Qarshii fi Transaction ID guuti");
+return;
+}
+
+
+let id = Date.now();
+
+
+set(ref(database,"deposits/"+id),{
+
+userId: currentUser,
+amount: amount,
+method: method,
+transactionId: tx,
+status:"pending",
+time:id
+
+});
+
+
+document.getElementById("depositMessage").innerHTML =
+"✅ Deposit ergame. Admin eega mirkaneessu.";
+
+}
 
 
 
