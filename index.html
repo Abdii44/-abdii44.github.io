@@ -114,6 +114,33 @@ th{
 
 <p id="paymentStatus"></p>
 </div>
+ <div class="card">
+
+<h2>💰 Deposit Request</h2>
+
+<select id="depositMethod">
+<option value="CBE">CBE Bank</option>
+<option value="CBEBirr">CBE Birr</option>
+<option value="Telebirr">Telebirr</option>
+</select>
+
+<br><br>
+
+<input id="depositAmount" type="number" placeholder="Qarshii">
+
+<br><br>
+
+<input id="transactionId" placeholder="Transaction ID">
+
+<br><br>
+
+<button onclick="sendDeposit()">
+Ergi
+</button>
+
+<p id="depositMessage"></p>
+
+</div>
 <button onclick="start()">Start Bingo</button>
 <button onclick="newGame()">New Game</button>
 
