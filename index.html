@@ -59,13 +59,19 @@ th,td{
 }
 
 td::before{
- content:"🎱";
+ content:"🔒";
  position:absolute;
- font-size:55px;
- left:0;
- top:0;
- opacity:0.25;
+ font-size:45px;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-50%);
+ opacity:1;
  z-index:0;
+}
+
+.mark::before{
+ content:"🎱";
+ font-size:45px;
 }
 
 td{
@@ -103,9 +109,13 @@ th{
 }
 
 .mark{
- background:#ff1493;
+ background:#00ff66;
  color:white;
- box-shadow:0 0 25px #ff69b4;
+ border:3px solid white;
+ box-shadow:
+ 0 0 25px #00ff66,
+ inset 0 0 15px white;
+ transform:scale(1.15);
 }
 
 #win{
@@ -342,7 +352,8 @@ cell.classList.add("mark");
 
 }else{
 
-cell.innerHTML="🎱"+columns[c][r];
+cell.innerHTML="🔒";
+cell.dataset.number = columns[c][r];
 
 }
 
@@ -411,10 +422,15 @@ if(window.saveNumber){
     let cells = document.querySelectorAll("#board td");
 
     cells.forEach(cell=>{
-        if(cell.innerHTML == n){
-            cell.classList.add("mark");
-        }
-    });
+
+    if(cell.dataset.number == n){
+
+    cell.innerHTML = "🎱";
+    cell.classList.add("mark");
+
+}
+
+});
 
     checkWin();
 }
@@ -477,11 +493,22 @@ document.getElementById("count").innerHTML="Lakkoofsa ba'e: 0";
 document.getElementById("history").innerHTML="Lakkoofsa ba'e hin jiru";
 document.getElementById("win").innerHTML="";
 
-document.querySelector("button[onclick='start()']").disabled=false;
-
 document.querySelectorAll("#board td").forEach(cell=>{
  cell.classList.remove("mark");
 });
+
+document.getElementById("board").innerHTML = `
+<tr>
+<th>B</th>
+<th>I</th>
+<th>N</th>
+<th>G</th>
+<th>O</th>
+</tr>
+`;
+
+createBoard();
+
 
 }
 
