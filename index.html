@@ -38,13 +38,63 @@ table{
  margin:auto;
  border-collapse:collapse;
 }
-
 th,td{
- border:2px solid black;
+ border:3px solid #ff69b4;
  width:60px;
  height:60px;
  font-size:22px;
- background:white;
+ background:#000;
+ color:white;
+ border-radius:50%;
+ box-shadow:
+ 0 0 15px #ff69b4,
+ inset 0 0 15px #333;
+ text-shadow:0 0 5px white;
+
+ display:table-cell;
+ vertical-align:middle;
+ text-align:center;
+ position:relative;
+ overflow:hidden;
+}
+
+td::before{
+ content:"🎱";
+ position:absolute;
+ font-size:55px;
+ left:0;
+ top:0;
+ opacity:0.25;
+ z-index:0;
+}
+
+td{
+ font-weight:bold;
+}
+
+td{
+ color:white;
+}
+
+td{
+ isolation:isolate;
+}
+
+td{
+ font-weight:bold;
+ vertical-align:middle;
+ border-radius:50%;
+ overflow:hidden;
+}
+
+td:hover{
+ transform:scale(1.1);
+ box-shadow:0 0 25px #ff69b4;
+}
+
+
+td{
+ font-weight:bold;
 }
 
 th{
@@ -53,7 +103,9 @@ th{
 }
 
 .mark{
- background:yellow;
+ background:#ff1493;
+ color:white;
+ box-shadow:0 0 25px #ff69b4;
 }
 
 #win{
@@ -290,7 +342,7 @@ cell.classList.add("mark");
 
 }else{
 
-cell.innerHTML=columns[c][r];
+cell.innerHTML="🎱"+columns[c][r];
 
 }
 
