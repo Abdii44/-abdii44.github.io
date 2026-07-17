@@ -263,9 +263,6 @@ return;
 
 }
 
-balance -= 25;
-
-document.getElementById("balance").innerHTML=balance;
 
 if(called.length>=75){
 
@@ -275,6 +272,16 @@ return;
 
 }
 
+
+balance -= 25;
+
+document.getElementById("balance").innerHTML = balance;
+
+if(window.saveBalance){
+    window.saveBalance();
+}
+
+
 let n;
 
 do{
@@ -283,20 +290,26 @@ n=Math.floor(Math.random()*75)+1;
 
 }while(called.includes(n));
 
+
 called.push(n);
 
 count++;
 
+
 document.getElementById("number").innerHTML=
 "Lakkoofsa: "+n;
+
 
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: "+count;
 
+
 document.getElementById("history").innerHTML=
 called.join(" - ");
 
+
 let cells=document.querySelectorAll("#board td");
+
 
 cells.forEach(cell=>{
 
@@ -310,10 +323,11 @@ cell.classList.add("mark");
 
 });
 
+
+
 checkWin();
 
 }
-
 function checkWin(){
 
 let cells=document.querySelectorAll("#board td");
@@ -346,11 +360,14 @@ document.getElementById("win").innerHTML=
 
 balance +=250;
 
-document.getElementById("balance").innerHTML=
+document.getElementById("balance").innerHTML =
 balance;
 
-alert("Ati mo'atte! 🎉");
+if(window.saveBalance){
+    window.saveBalance();
+}
 
+alert("Ati mo'atte! 🎉");
 return;
 
 }
