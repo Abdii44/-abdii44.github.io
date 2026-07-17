@@ -543,13 +543,15 @@ alert(e.message);
 
 }
 
-window.saveBalance=function(){
+window.savePlayer=function(){
 
 if(currentUser){
 
+let name=document.getElementById("player").value;
+
 set(
-ref(database,"players/"+currentUser+"/balance"),
-balance
+ref(database,"players/"+currentUser+"/name"),
+name
 );
 
 }
