@@ -7,27 +7,140 @@
 <style>
 
  
-body{
+
+ body{
  text-align:center;
  font-family:Arial,sans-serif;
  background:
- radial-gradient(circle, rgba(0,255,100,0.15), #000 70%),
- url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
- background-color:#000;
- background-size:cover;
+ radial-gradient(circle,#3b2500,#000 70%);
  color:white;
+ margin:0;
+ padding:20px;
 }
 
 h1{
- color:#00ff66;
+ color:#ffd700;
  font-size:45px;
- text-shadow:0 0 15px #00ff66;
+ text-shadow:0 0 20px gold;
 }
+
+.card{
+ background:linear-gradient(145deg,#2b1605,#000);
+ border:8px solid #8b5a2b;
+ border-radius:25px;
+ padding:20px;
+ margin:20px auto;
+ width:90%;
+ max-width:550px;
+ box-shadow:
+ 0 0 30px gold,
+ inset 0 0 20px #5c3a00;
+}
+
+table{
+ margin:auto;
+ border-collapse:separate;
+ border-spacing:8px;
+ background:#5c3a00;
+ padding:15px;
+ border-radius:20px;
+ box-shadow:0 0 25px gold;
+}
+
+th{
+ background:#000;
+ color:gold;
+ font-size:25px;
+}
+
+td{
+ width:60px;
+ height:60px;
+ border-radius:50%;
+ background:
+ radial-gradient(circle,#333,#000);
+ border:3px solid gold;
+ color:white;
+ font-size:22px;
+ box-shadow:
+ 0 0 15px gold,
+ inset 0 0 15px #555;
+ transition:.3s;
+}
+
+td:hover{
+ transform:scale(1.15);
+}
+
+.mark{
+ background:
+ radial-gradient(circle,#ffd700,#8b5a00);
+ color:black;
+ box-shadow:
+ 0 0 30px gold;
+}
+
+#number{
+ background:#000;
+ border:5px solid gold;
+ border-radius:50%;
+ width:120px;
+ height:120px;
+ line-height:120px;
+ margin:auto;
+ font-size:25px;
+ animation:ball 1s;
+}
+
+@keyframes ball{
+ from{transform:scale(0);}
+ to{transform:scale(1);}
+}
+
+#history{
+ max-height:120px;
+ overflow-y:auto;
+ background:#111;
+ padding:15px;
+ border-radius:15px;
+ border:2px solid gold;
+}
+
+button{
+ background:linear-gradient(#ffd700,#8b5a00);
+ color:black;
+ font-weight:bold;
+ border:none;
+ border-radius:15px;
+ padding:12px 25px;
+ margin:8px;
+ cursor:pointer;
+}
+
+@media(max-width:600px){
+
+td{
+ width:45px;
+ height:45px;
+ font-size:16px;
+}
+
+h1{
+ font-size:32px;
+}
+
+}
+
+h1{
+ color:#ffd700;
+ font-size:45px;
+ text-shadow:0 0 20px gold;
+}
+
 input{
  padding:10px;
  font-size:18px;
 }
-
 button{
  padding:12px 25px;
  font-size:18px;
@@ -103,10 +216,7 @@ td{
  font-weight:bold;
 }
 
-th{
- background:green;
- color:white;
-}
+
 
 .mark{
  background:#00ff66;
