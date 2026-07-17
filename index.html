@@ -1,290 +1,146 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>BingoHub</title>
+
 <style>
 
- 
-
- body{
- text-align:center;
- font-family:Arial,sans-serif;
- background:
- radial-gradient(circle,#3b2500,#000 70%);
- color:white;
- margin:0;
- padding:20px;
-}
-
-
-
-.card{
- background:linear-gradient(145deg,#2b1605,#000);
- border:8px solid #8b5a2b;
- border-radius:25px;
- padding:20px;
- margin:20px auto;
- width:90%;
- max-width:550px;
- box-shadow:
- 0 0 30px gold,
- inset 0 0 20px #5c3a00;
-}
-
-table{
- margin:auto;
- border-collapse:separate;
- border-spacing:8px;
- background:#5c3a00;
- padding:15px;
- border-radius:20px;
- box-shadow:0 0 25px gold;
-}
-
-th{
- background:#000;
- color:gold;
- font-size:25px;
-}
-
-td{
- width:60px;
- height:60px;
- border-radius:50%;
- background:
- radial-gradient(circle,#333,#000);
- border:3px solid gold;
- color:white;
- font-size:22px;
- box-shadow:
- 0 0 15px gold,
- inset 0 0 15px #555;
- transition:.3s;
-}
-
-td:hover{
- transform:scale(1.15);
-}
-
-.mark{
- background:
- radial-gradient(circle,#ffd700,#8b5a00);
- color:black;
- box-shadow:
- 0 0 30px gold;
-}
-
-#number{
- background:#000;
- border:5px solid gold;
- border-radius:50%;
- width:120px;
- height:120px;
- line-height:120px;
- margin:auto;
- font-size:25px;
- animation:ball 1s;
-}
-
-@keyframes ball{
- from{transform:scale(0);}
- to{transform:scale(1);}
-}
-
-#history{
- max-height:120px;
- overflow-y:auto;
- background:#111;
- padding:15px;
- border-radius:15px;
- border:2px solid gold;
-}
-
-button{
- background:linear-gradient(#ffd700,#8b5a00);
- color:black;
- font-weight:bold;
- border:none;
- border-radius:15px;
- padding:12px 25px;
- margin:8px;
- cursor:pointer;
-}
-
-@media(max-width:600px){
-
-td{
- width:45px;
- height:45px;
- font-size:16px;
+body{
+    text-align:center;
+    font-family:Arial,sans-serif;
+    background:
+    radial-gradient(circle,#3b2500,#000 70%);
+    color:white;
+    margin:0;
+    padding:20px;
 }
 
 h1{
- font-size:32px;
+    color:#ffd700;
+    font-size:45px;
+    text-shadow:0 0 20px gold;
 }
 
-}
-
-h1{
- color:#ffd700;
- font-size:45px;
- text-shadow:0 0 20px gold;
-}
-
-input{
- padding:10px;
- font-size:18px;
-}
-button{
- padding:12px 25px;
- font-size:18px;
- margin:10px;
-}
-
-table{
- margin:auto;
- border-collapse:collapse;
-}
-table{
- margin:auto;
- border-collapse:collapse;
-}
-
-th,td{
- width:60px;
- height:60px;
- font-size:22px;
- background:#000;
- color:white;
- border:3px solid #ff69b4;
- border-radius:50%;
- box-shadow:
- 0 0 15px #ff69b4,
- inset 0 0 15px #333;
- text-align:center;
- vertical-align:middle;
- position:relative;
- overflow:hidden;
-}
- 
-
-td::before{
- content:"🔒";
- position:absolute;
- font-size:45px;
- left:50%;
- top:50%;
- transform:translate(-50%,-50%);
- opacity:1;
- z-index:0;
-}
-
-.mark::before{
- content:"🎱";
- font-size:45px;
-}
-
-td{
- font-weight:bold;
-}
-
-td{
- color:white;
-}
-
-td{
- isolation:isolate;
-}
-
-td{
- font-weight:bold;
- vertical-align:middle;
- border-radius:50%;
- overflow:hidden;
-}
-
-td:hover{
- transform:scale(1.1);
- box-shadow:0 0 25px #ff69b4;
-}
-
-
-
-
-
-
-
-
-#win{
- color:green;
- font-size:30px;
-}
-.pop{
- animation:pop 0.5s;
-}
-
-@keyframes pop{
- 0%{
-  transform:scale(1.5);
- }
- 100%{
-  transform:scale(1);
- }
-}
-
-.confetti{
- animation:win 1s infinite;
-}
-
-@keyframes win{
- 0%{
-  transform:scale(1);
- }
- 50%{
-  transform:scale(1.4);
- }
- 100%{
-  transform:scale(1);
- }
-}
 .card{
- background:rgba(255,255,255,0.12);
- backdrop-filter:blur(10px);
- padding:20px;
- margin:20px auto;
- width:90%;
- max-width:500px;
- border-radius:20px;
- box-shadow:0 0 20px black;
-}
-
-button{
- background:#00aa55;
- color:white;
- border:none;
- border-radius:15px;
- cursor:pointer;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    margin:20px auto;
+    width:90%;
+    max-width:500px;
+    border-radius:20px;
+    box-shadow:0 0 20px black;
 }
 
 input,select{
- border-radius:10px;
- border:none;
- padding:10px;
+    padding:10px;
+    font-size:18px;
+    border-radius:10px;
+    border:none;
+    margin:5px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    margin:10px;
+    border-radius:15px;
+    border:none;
+    background:#00aa55;
+    color:white;
+    cursor:pointer;
+}
+
+table{
+    margin:auto;
+    border-collapse:separate;
+    border-spacing:8px;
+}
+
+th{
+    color:gold;
+    font-size:25px;
+}
+
+td{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#000;
+    border:3px solid #ff69b4;
+    color:white;
+    font-size:22px;
+    position:relative;
+    overflow:hidden;
+}
+
+td::before{
+    content:"🔒";
+    position:absolute;
+    font-size:40px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.mark{
+    background:gold;
+    color:black;
+    box-shadow:0 0 30px gold;
+}
+
+.mark::before{
+    content:"🎱";
+}
+
+#number{
+    width:120px;
+    height:120px;
+    line-height:120px;
+    margin:auto;
+    border-radius:50%;
+    background:#000;
+    border:5px solid gold;
+    font-size:25px;
+}
+
+#history{
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    max-height:120px;
+    overflow:auto;
+}
+
+#win{
+    color:#00ff00;
+    font-size:30px;
+}
+
+@media(max-width:600px){
+td{
+    width:45px;
+    height:45px;
+    font-size:16px;
+}
 }
 
 </style>
+
 </head>
 
 <body>
- <h1>🎱 BingoHub</h1>
+
+<h1>🎱 BingoHub</h1>
+
 <input id="player" placeholder="Maqaa Player">
 <button onclick="setPlayer()">Galchi</button>
 
 <h2 id="name"></h2>
 
+
 <table id="board">
+
 <tr>
 <th>B</th>
 <th>I</th>
@@ -292,119 +148,48 @@ input,select{
 <th>G</th>
 <th>O</th>
 </tr>
+
 </table>
+
+
 <div class="card">
-<h2>💳 Payment</h2>
 
-<button onclick="pay('Telebirr')">📱 Telebirr</button>
+<h2>🎮 Game</h2>
 
-<button onclick="pay('CBE')">🏦 CBE Bank</button>
-
-<button onclick="pay('Awash')">🏦 Awash Bank</button>
-
-<button onclick="pay('CBEBirr')">📲 CBE Birr</button>
-
-<p id="paymentStatus"></p>
-</div>
- <div class="card">
-
-<h2>💰 Deposit Request</h2>
-
-<select id="depositMethod">
-<option value="CBE">CBE Bank</option>
-<option value="CBEBirr">CBE Birr</option>
-<option value="Telebirr">Telebirr</option>
-</select>
-
-<br><br>
-
-<input id="depositAmount" type="number" placeholder="Qarshii">
-
-<br><br>
-
-<input id="transactionId" placeholder="Transaction ID">
-
-<br><br>
-
-<button onclick="sendDeposit()">
-Ergi
-</button>
-
-<p id="depositMessage"></p>
-
-</div>
 <button onclick="start()">Start Bingo</button>
-<button onclick="newGame()">New Game</button>
 
-<h3>💰 Balance: <span id="balance">100</span></h3>
+<button onclick="newGame()">Game Haaraa</button>
 
-<input id="deposit" type="number" placeholder="Qarshii galchi">
-<button onclick="addMoney()">Deposit</button>
+<h3>💰 Balance:
+<span id="balance">100</span>
+</h3>
 
-<input id="withdraw" type="number" placeholder="Qarshii baasi">
-<button onclick="takeMoney()">Withdrawal</button>
+</div>
+
 
 <h2 id="number">Lakkoofsa: -</h2>
-<p id="count">Lakkoofsa ba'e: 0</p>
+
+<p id="count">
+Lakkoofsa ba'e: 0
+</p>
+
+
 <h3>📜 History</h3>
-<p id="history">Lakkoofsa ba'e hin jiru</p>
+
+<p id="history">
+Lakkoofsa ba'e hin jiru
+</p>
+
+
 <h2 id="win"></h2>
-<h3>Account</h3>
 
-<input id="email" type="email" placeholder="Email">
-<br><br>
 
-<input id="password" type="password" placeholder="Password">
-<br><br>
-
-<button onclick="register()">Register</button>
-<button onclick="login()">Login</button>
-
-<p id="userStatus">Hin seenne</p>
-<button onclick="setLanguage('om')">Afaan Oromoo</button>
-<button onclick="setLanguage('en')">English</button>
- <script>
+<script>
 
 let called=[];
 let count=0;
-let columns=[];
 let balance=100;
-let currentUser="";
-function addMoney(){
 
-let money = Number(document.getElementById("deposit").value);
-
-if(money > 0){
-
-balance += money;
-
-document.getElementById("balance").innerHTML = balance;
-if(currentUser){
- saveBalance(currentUser);
-}
-}
-
-}
-
-function takeMoney(){
-
-let money = Number(document.getElementById("withdraw").value);
-
-if(money <= balance){
-
-balance -= money;
-
-document.getElementById("balance").innerHTML = balance;
-if(currentUser){
- saveBalance(currentUser);
-}
-}else{
-
-alert("Balance gahaa hin qabu!");
-
-}
-
-}
 
 function randomNumbers(min,max){
 
@@ -424,25 +209,32 @@ return arr;
 
 }
 
+
 function createBoard(){
 
-columns=[
+let columns=[
+
 randomNumbers(1,15),
 randomNumbers(16,30),
 randomNumbers(31,45),
 randomNumbers(46,60),
 randomNumbers(61,75)
+
 ];
 
+
 let board=document.getElementById("board");
+
 
 for(let r=0;r<5;r++){
 
 let row=board.insertRow();
 
+
 for(let c=0;c<5;c++){
 
 let cell=row.insertCell();
+
 
 if(r==2 && c==2){
 
@@ -452,7 +244,7 @@ cell.classList.add("mark");
 }else{
 
 cell.innerHTML="🔒";
-cell.dataset.number = columns[c][r];
+cell.dataset.number=columns[c][r];
 
 }
 
@@ -461,141 +253,182 @@ cell.dataset.number = columns[c][r];
 }
 
 }
+
 
 createBoard();
 
-function setPlayer(){
 
+function setPlayer(){
 
 let p=document.getElementById("player").value;
 
-document.getElementById("name").innerHTML =
-"👤 Player: " + p;
+document.getElementById("name").innerHTML=
+"👤 Player: "+p;
 
-savePlayer(p);
+}
+
+ function start(){
+
+if(balance < 25){
+
+alert("Qarshii gahaa hin qabu!");
+
+return;
 
 }
 
 
+balance -= 25;
 
-function start(){
+document.getElementById("balance").innerHTML=balance;
 
-    if(called.length >= 75){
-        alert("Lakkoofsi hundi ba'eera. New Game jalqabi.");
-        return;
-    }
 
-    if(balance < 25){
-        alert("Qarshii gahaa hin qabu!");
-        return;
-    }
+if(called.length>=75){
 
-    balance -= 25;
-    document.getElementById("balance").innerHTML = balance;
+alert("Lakkoofsi hundi ba'eera!");
 
-    let n;
+return;
 
-    do{
-        n = Math.floor(Math.random()*75)+1;
-    }while(called.includes(n));
+}
 
-   called.push(n);
+
+let n;
+
+
+do{
+
+n=Math.floor(Math.random()*75)+1;
+
+}while(called.includes(n));
+
+
+called.push(n);
+
 count++;
 
-if(window.saveNumber){
-    saveNumber(n);
-} 
 
-    document.getElementById("history").innerHTML = called.join(" - ");
+document.getElementById("number").innerHTML=
+"Lakkoofsa: "+n;
 
-    let num = document.getElementById("number");
-    num.innerHTML = "Lakkoofsa: " + n;
 
-    num.classList.remove("pop");
-    void num.offsetWidth;
-    num.classList.add("pop");
+document.getElementById("count").innerHTML=
+"Lakkoofsa ba'e: "+count;
 
-    document.getElementById("count").innerHTML =
-        "Lakkoofsa ba'e: " + count;
 
-    let cells = document.querySelectorAll("#board td");
+document.getElementById("history").innerHTML=
+called.join(" - ");
 
-    cells.forEach(cell=>{
 
-    if(cell.dataset.number == n){
 
-    cell.innerHTML = numberEmoji(n);
-    cell.classList.add("mark");
+let cells=document.querySelectorAll("#board td");
+
+
+cells.forEach(cell=>{
+
+
+if(cell.dataset.number==n){
+
+cell.innerHTML="🎱"+n;
+
+cell.classList.add("mark");
 
 }
+
 
 });
 
-    checkWin();
+
+checkWin();
+
+
 }
+
+
 
 function checkWin(){
 
-    let cells = document.querySelectorAll("#board td");
 
-    let lines = [
-        [0,1,2,3,4],
-        [5,6,7,8,9],
-        [10,11,12,13,14],
-        [15,16,17,18,19],
-        [20,21,22,23,24],
-        [0,5,10,15,20],
-        [1,6,11,16,21],
-        [2,7,12,17,22],
-        [3,8,13,18,23],
-        [4,9,14,19,24],
-        [0,6,12,18,24],
-        [4,8,12,16,20]
-    ];
+let cells=document.querySelectorAll("#board td");
 
-    for(let line of lines){
 
-        if(line.every(i => cells[i].classList.contains("mark"))){
+let lines=[
 
-            document.querySelector("button[onclick='start()']").disabled = true;
+[0,1,2,3,4],
+[5,6,7,8,9],
+[10,11,12,13,14],
+[15,16,17,18,19],
+[20,21,22,23,24],
 
-            let win = document.getElementById("win");
-            win.innerHTML = "🎉🎉 BINGO! MO'ATTE 🎉🎉";
-            win.classList.add("confetti");
+[0,5,10,15,20],
+[1,6,11,16,21],
+[2,7,12,17,22],
+[3,8,13,18,23],
+[4,9,14,19,24],
 
-            let sound = new Audio("https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg");
-            sound.play();
+[0,6,12,18,24],
+[4,8,12,16,20]
 
-            alert("🎉 BINGO! Ati mo'atte!");
+];
 
-            balance += 250;
-            document.getElementById("balance").innerHTML = balance;
-if(currentUser){
-    saveBalance(currentUser);
+
+for(let line of lines){
+
+
+if(line.every(i=>cells[i].classList.contains("mark"))){
+
+
+document.getElementById("win").innerHTML=
+"🎉🎉 BINGO! MO'ATTE 🎉🎉";
+
+
+balance +=250;
+
+
+document.getElementById("balance").innerHTML=
+balance;
+
+
+alert("Ati mo'atte! 🎉");
+
+
+return;
+
+
 }
-            return;
-        }
-    }
+
+
 }
-  
+
+
+}
+
+
+
 function newGame(){
 
-alert("🎮 Game haaraa jalqaba!");
 
 called=[];
+
 count=0;
 
-document.getElementById("balance").innerHTML=balance;
-document.getElementById("number").innerHTML="Lakkoofsa: -";
-document.getElementById("count").innerHTML="Lakkoofsa ba'e: 0";
-document.getElementById("history").innerHTML="Lakkoofsa ba'e hin jiru";
+
+document.getElementById("number").innerHTML=
+"Lakkoofsa: -";
+
+
+document.getElementById("count").innerHTML=
+"Lakkoofsa ba'e: 0";
+
+
+document.getElementById("history").innerHTML=
+"Lakkoofsa ba'e hin jiru";
+
+
 document.getElementById("win").innerHTML="";
 
-document.querySelectorAll("#board td").forEach(cell=>{
- cell.classList.remove("mark");
-});
 
-document.getElementById("board").innerHTML = `
+document.getElementById("board").innerHTML=`
+
 <tr>
 <th>B</th>
 <th>I</th>
@@ -603,269 +436,18 @@ document.getElementById("board").innerHTML = `
 <th>G</th>
 <th>O</th>
 </tr>
+
 `;
+
 
 createBoard();
 
 
 }
 
-function setLanguage(lang){
-if(lang=="en"){
-
-document.querySelector("button[onclick='setPlayer()']").innerHTML="Enter";
-
-document.getElementById("player").placeholder="Player Name";
-
-document.querySelector("button[onclick='start()']").innerHTML="Start Bingo";
-
-document.querySelector("button[onclick='newGame()']").innerHTML="New Game";
-
-}else{
-
-document.querySelector("button[onclick='setPlayer()']").innerHTML="Galchi";
-
-document.getElementById("player").placeholder="Maqaa Player";
-
-document.querySelector("button[onclick='start()']").innerHTML="Start Bingo";
-
-document.querySelector("button[onclick='newGame()']").innerHTML="Game Haaraa";
-
-}
-
-}
-function pay(method){
-
-    document.getElementById("paymentStatus").innerHTML =
-    "⏳ " + method + " qopheessaa jira...";
-
-    setTimeout(function(){
-
-        document.getElementById("paymentStatus").innerHTML =
-        "✅ " + method + " filatte.";
-
-    },1500);
-
-}
-function numberEmoji(n){
-    if(n <= 10){
-        return ["","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"][n];
-    }
-    return "🎱"+n;
-}
- </script>
-
-
-
-
-
-
-<script type="module">
-window.register = function(){
-
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
-
-createUserWithEmailAndPassword(auth,email,password)
-
-.then(()=>{
-document.getElementById("userStatus").innerHTML =
-"✅ Account uumame";
-})
-
-.catch(error=>{
-alert(error.message);
-});
-
-}
-
-
-window.login = function(){
-
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
-
-signInWithEmailAndPassword(auth,email,password)
-
-.then(()=>{
-document.getElementById("userStatus").innerHTML =
-"👤 Seename";
-})
-
-.catch(error=>{
-alert(error.message);
-});
-
-}
-
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyBsLooxOygkTwdiGvhPZbpv_AE83pyMt7k",
-  authDomain: "abdii-binfo.firebaseapp.com",
-  databaseURL: "https://abdii-binfo-default-rtdb.firebaseio.com",
-  projectId: "abdii-binfo",
-  storageBucket: "abdii-binfo.firebasestorage.app",
-  messagingSenderId: "139482744989",
-  appId: "1:139482744989:web:5d446f08fde980668dec74"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
-
-
-// AS JALA KANA GALCHI
-
-
-
-onAuthStateChanged(auth,(user)=>{
-
- if(user){
-
-   currentUser = user.uid;
-
-   document.getElementById("userStatus").innerHTML =
-   "👤 Seename: " + user.email;
-
-   loadBalance(user.uid);
-
- }else{
-
-   currentUser="";
-
- }
-
-});
-
-window.loadBalance = function(uid){
-
-  onValue(ref(database,"players/"+uid+"/balance"), (snap)=>{
-
-    if(snap.exists()){
-
-      const data = snap.val();
-
-      if(typeof data === "object"){
-        balance = Number(data.balance || 100);
-      }else{
-        balance = Number(data);
-      }
-
-    }else{
-
-      balance = 100;
-      saveBalance(uid);
-
-    }
-
-    document.getElementById("balance").innerHTML = balance;
-
-  });
-
-}
-
- 
-
-window.saveBalance = function(user){
-
- set(ref(database, "players/" + user + "/balance"), balance);
-
-}
-window.savePlayer = function(name){
-
- if(currentUser){
-
-  set(ref(database, "players/" + currentUser + "/name"), name);
-
- }
-
-}
-window.sendDeposit = function(){
-
-let amount = Number(document.getElementById("depositAmount").value);
-let method = document.getElementById("depositMethod").value;
-let tx = document.getElementById("transactionId").value;
-
-
-if(!currentUser){
-alert("Jalqaba Login godhi");
-return;
-}
-
-
-if(amount <= 0 || tx==""){
-alert("Qarshii fi Transaction ID guuti");
-return;
-}
-
-
-let id = Date.now();
-
-
-set(ref(database,"deposits/"+id),{
-
-userId: currentUser,
-amount: amount,
-method: method,
-transactionId: tx,
-status:"pending",
-time:id
-
-});
-
-
-document.getElementById("depositMessage").innerHTML =
-"✅ Deposit ergame. Admin eega mirkaneessu.";
-
-}
-
-
-
-window.saveNumber = function(number){
-
-  set(ref(database, "bingo/currentNumber"), {
-    number: number,
-    history: called,
-    count: count,
-    time: Date.now()
-  });
-
-}
-
- 
-onValue(ref(database, "bingo/currentNumber"), (snapshot) => {
-
-  const data = snapshot.val();
-
-  if(data){
-
-    document.getElementById("number").innerHTML =
-      "Lakkoofsa: " + data.number;
-
-    document.getElementById("count").innerHTML =
-      "Lakkoofsa ba'e: " + (data.count || 0);
-
-    document.getElementById("history").innerHTML =
-      data.history ? data.history.join(" - ") : "Lakkoofsa ba'e hin jiru";
-
-  }
-
-});
-
-
 
 </script>
 
+
 </body>
 </html>
-
