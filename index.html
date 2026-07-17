@@ -132,7 +132,23 @@ td{
 <body>
 
 <h1>🎱 BingoHub</h1>
+<div class="card">
 
+<h2>🔐 Account</h2>
+
+<input id="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+<br>
+
+<button onclick="register()">Galmaa'i</button>
+
+<button onclick="login()">Seeni</button>
+
+<p id="account"></p>
+
+</div>
 <input id="player" placeholder="Maqaa Player">
 <button onclick="setPlayer()">Galchi</button>
 
@@ -483,7 +499,8 @@ password
 
 .then(()=>{
 
-alert("Account uumame");
+document.getElementById("account").innerHTML =
+"✅ Account uumame";
 
 })
 
@@ -509,7 +526,8 @@ password
 
 .then(()=>{
 
-alert("Seename");
+document.getElementById("account").innerHTML =
+"✅ Seename";
 
 })
 
