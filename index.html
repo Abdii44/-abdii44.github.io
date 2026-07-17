@@ -267,8 +267,11 @@ let p=document.getElementById("player").value;
 document.getElementById("name").innerHTML=
 "👤 Player: "+p;
 
+if(window.savePlayer){
+    window.savePlayer();
 }
 
+}
  function start(){
 
 if(balance < 25){
