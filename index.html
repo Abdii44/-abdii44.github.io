@@ -18,11 +18,7 @@
  padding:20px;
 }
 
-h1{
- color:#ffd700;
- font-size:45px;
- text-shadow:0 0 20px gold;
-}
+
 
 .card{
  background:linear-gradient(145deg,#2b1605,#000);
@@ -151,25 +147,28 @@ table{
  margin:auto;
  border-collapse:collapse;
 }
+table{
+ margin:auto;
+ border-collapse:collapse;
+}
+
 th,td{
- border:3px solid #ff69b4;
  width:60px;
  height:60px;
  font-size:22px;
  background:#000;
  color:white;
+ border:3px solid #ff69b4;
  border-radius:50%;
  box-shadow:
  0 0 15px #ff69b4,
  inset 0 0 15px #333;
- text-shadow:0 0 5px white;
-
- display:table-cell;
- vertical-align:middle;
  text-align:center;
+ vertical-align:middle;
  position:relative;
  overflow:hidden;
 }
+ 
 
 td::before{
  content:"🔒";
@@ -212,21 +211,11 @@ td:hover{
 }
 
 
-td{
- font-weight:bold;
-}
 
 
 
-.mark{
- background:#00ff66;
- color:white;
- border:3px solid white;
- box-shadow:
- 0 0 25px #00ff66,
- inset 0 0 15px white;
- transform:scale(1.15);
-}
+
+
 
 #win{
  color:green;
@@ -595,7 +584,6 @@ alert("🎮 Game haaraa jalqaba!");
 
 called=[];
 count=0;
-balance=100;
 
 document.getElementById("balance").innerHTML=balance;
 document.getElementById("number").innerHTML="Lakkoofsa: -";
@@ -787,11 +775,10 @@ window.loadBalance = function(uid){
 }
 
  
+
 window.saveBalance = function(user){
 
-  set(ref(database, "players/" + user + "/balance"), {
-    balance: balance
-  });
+ set(ref(database, "players/" + user + "/balance"), balance);
 
 }
 window.savePlayer = function(name){
