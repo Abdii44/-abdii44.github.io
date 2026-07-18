@@ -200,7 +200,7 @@ td{
 <p id="payment"></p>
 <h3>💳 Payment Status</h3>
 
->
+<p id="payment"></p>
 </div>
 </div>
 
@@ -320,7 +320,6 @@ return;
 
 }
 
-
 if(called.length>=75){
 
 alert("Lakkoofsi hundi ba'eera!");
@@ -328,7 +327,6 @@ alert("Lakkoofsi hundi ba'eera!");
 return;
 
 }
-
 
 balance -= 25;
 
@@ -338,7 +336,6 @@ if(window.saveBalance){
     window.saveBalance();
 }
 
-
 let n;
 
 do{
@@ -347,31 +344,24 @@ n=Math.floor(Math.random()*75)+1;
 
 }while(called.includes(n));
 
-
 if(window.saveLiveNumber){
     window.saveLiveNumber(n);
 }
-
 
 called.push(n);
 
 count++;
 
-
 document.getElementById("number").innerHTML=
 "Lakkoofsa: "+n;
-
 
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: "+count;
 
-
 document.getElementById("history").innerHTML=
 called.join(" - ");
 
-
 let cells=document.querySelectorAll("#board td");
-
 
 cells.forEach(cell=>{
 
@@ -384,8 +374,6 @@ cell.classList.add("mark");
 }
 
 });
-
-
 
 checkWin();
 
@@ -438,7 +426,6 @@ return;
 
 }
 
-
     function deposit(){
 
 let amount=document.getElementById("amount").value;
@@ -464,7 +451,6 @@ document.getElementById("payment").innerHTML=
 }
 
 }
-
 
 function withdraw(){
 
@@ -708,7 +694,6 @@ document.getElementById("roomStatus").innerHTML=
 
 }
 
-
 window.joinRoom=function(){
 
 let room=document.getElementById("roomId").value;
@@ -729,7 +714,48 @@ document.getElementById("roomStatus").innerHTML=
 }
 
 }
-    
+    window.sendDeposit=function(amount,method){
+
+if(currentUser){
+
+set(
+ref(database,"payments/"+currentUser),
+{
+type:"deposit",
+amount:Number(amount),
+method:method,
+status:"pending",
+time:Date.now()
+}
+);
+
+document.getElementById("payment").innerHTML=
+"✅ Gaaffiin qarshii galchuu ergame";
+
+}
+
+}
+
+window.sendWithdraw=function(amount){
+
+if(currentUser){
+
+set(
+ref(database,"payments/"+currentUser),
+{
+type:"withdraw",
+amount:Number(amount),
+status:"pending",
+time:Date.now()
+}
+);
+
+document.getElementById("payment").innerHTML=
+"✅ Gaaffiin baasuu ergame";
+
+}
+
+}
 function loadBalance(uid){
 
 onValue(
@@ -748,17 +774,12 @@ balance=100;
 window.saveBalance();
 
 }
-
 document.getElementById("balance").innerHTML=
 balance;
 
 });
 
 }
-
-
-// ASII GADII KA'I
-
 
 </script>
 
