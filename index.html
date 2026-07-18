@@ -215,7 +215,21 @@ Lakkoofsa ba'e hin jiru
 </p>
 
 <h2 id="win"></h2>
+<div class="card">
 
+<h2>🌐 Multiplayer Room</h2>
+
+<input id="roomId" placeholder="Room ID fakkeenya 1234">
+
+<br>
+
+<button onclick="createRoom()">➕ Room Uumi</button>
+
+<button onclick="joinRoom()">🚪 Room Seeni</button>
+
+<p id="roomStatus"></p>
+
+</div>
 <script>
 
 let called=[];
@@ -593,6 +607,48 @@ set(
 ref(database,"players/"+currentUser+"/balance"),
 balance
 );
+
+}
+
+}
+    window.createRoom=function(){
+
+let room=document.getElementById("roomId").value;
+
+if(currentUser && room){
+
+set(
+ref(database,"rooms/"+room+"/players/"+currentUser),
+{
+joined:true,
+time:Date.now()
+}
+);
+
+document.getElementById("roomStatus").innerHTML=
+"✅ Room uumame: "+room;
+
+}
+
+}
+
+
+window.joinRoom=function(){
+
+let room=document.getElementById("roomId").value;
+
+if(currentUser && room){
+
+set(
+ref(database,"rooms/"+room+"/players/"+currentUser),
+{
+joined:true,
+time:Date.now()
+}
+);
+
+document.getElementById("roomStatus").innerHTML=
+"✅ Room keessa galte: "+room;
 
 }
 
