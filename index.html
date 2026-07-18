@@ -338,7 +338,8 @@ cell.dataset.number=columns[c][r];
 
 }
 
-createBoard();
+
+
 
 function setPlayer(){
 
@@ -352,6 +353,12 @@ if(window.savePlayer){
 }
 
 }
+    function changeLanguage(){
+    let lang=document.getElementById("language").value;
+    alert("Language changed: "+lang);
+}
+
+
  function start(){
 
 if(balance < 25){
@@ -539,12 +546,6 @@ document.getElementById("board").innerHTML=`
 createBoard();
 
 }
-called=[];
-
-count=0;
-
-document.getElementById("number").innerHTML=
-"Lakkoofsa: -";
 
 document.getElementById("count").innerHTML=
 "Lakkoofsa ba'e: 0";
@@ -567,8 +568,6 @@ document.getElementById("board").innerHTML=`
 `;
 
 createBoard();
-
-}
 
 </script>
 <script type="module">
