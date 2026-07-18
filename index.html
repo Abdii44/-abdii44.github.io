@@ -570,7 +570,22 @@ alert(e.message);
 
 }
 
-window.saveBalance=function(){
+window.saveLiveNumber=function(number){
+
+if(currentUser){
+
+set(
+ref(database,"game/liveNumber"),
+{
+number:number,
+time:Date.now()
+}
+);
+
+}
+
+}
+    window.saveBalance=function(){
 
 if(currentUser){
 
@@ -582,7 +597,6 @@ balance
 }
 
 }
-
 function loadBalance(uid){
 
 onValue(
