@@ -578,26 +578,16 @@ createBoard();
 </script>
 <script type="module">
 
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-
-import { 
-getDatabase,
-ref,
-set,
-onValue,
-update
-}
-from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+import { initializeApp } from 
+"https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
 getAuth,
 createUserWithEmailAndPassword,
 signInWithEmailAndPassword,
 onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-
-
+} from 
+"https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD54A0iUPZ23bO2UkDFPLBM5xj75Jigqrg",
   authDomain: "abdii-bingo.firebaseapp.com",
@@ -605,8 +595,16 @@ const firebaseConfig = {
   projectId: "abdii-bingo",
   storageBucket: "abdii-bingo.firebasestorage.app",
   messagingSenderId: "269619001417",
-  appId: "1:269619001417:web:38e454c46f5227e08ca798"
+  appId: "1:269619001417:web:258e343d805a3f698ca798",
+  measurementId: "G-SCP8NX2Z6J"
 };
+import {
+getDatabase,
+ref,
+set,
+onValue
+} from 
+"https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 const app=initializeApp(firebaseConfig);
 
 const database=getDatabase(app);
