@@ -138,16 +138,16 @@ td{
 <body>
 
 <div class="header">
+
 <h1>🎱 BingoHub</h1>
 
 <div class="balanceTop">
 💰 <span id="topBalance">100</span> ETB
 </div>
 
-
+</div>
 
 <h2>🌐 Language</h2>
-
 <select id="language" onchange="changeLanguage()">
 
 <option value="om">🇪🇹 Afaan Oromoo</option>
@@ -253,7 +253,6 @@ td{
 <p id="payment"></p>
 <h3>💳 Payment Status</h3>
 
-
 </div>
 </div>
 
@@ -349,9 +348,6 @@ cell.dataset.number=columns[c][r];
 
 }
 
-
-
-
 function setPlayer(){
 
 let p=document.getElementById("player").value;
@@ -368,7 +364,6 @@ if(window.savePlayer){
     let lang=document.getElementById("language").value;
     alert("Language changed: "+lang);
 }
-
 
  function start(){
 
@@ -391,7 +386,7 @@ return;
 balance -= 25;
 
 document.getElementById("balance").innerHTML = balance;
-
+document.getElementById("topBalance").innerHTML = balance;
 if(window.saveBalance){
     window.saveBalance();
 }
@@ -472,7 +467,8 @@ balance +=250;
 
 document.getElementById("balance").innerHTML =
 balance;
-
+document.getElementById("topBalance").innerHTML =
+balance;
 if(window.saveBalance){
     window.saveBalance();
 }
@@ -529,7 +525,6 @@ window.sendWithdraw(amount);
 
 }
     function newGame(){
-
 
       called=[];
 count=0;  
@@ -816,7 +811,8 @@ window.saveBalance();
 }
 document.getElementById("balance").innerHTML=
 balance;
-
+document.getElementById("topBalance").innerHTML=
+balance;
 });
 
 }
